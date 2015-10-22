@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  VegasViewController.swift
 //  Las Vegas 2
 //
 //  Created by Chris Archibald on 10/21/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class VegasViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

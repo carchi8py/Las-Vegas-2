@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2747EB541BD8B53300B6CE43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB531BD8B53300B6CE43 /* AppDelegate.swift */; };
-		2747EB561BD8B53300B6CE43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB551BD8B53300B6CE43 /* ViewController.swift */; };
+		2747EB561BD8B53300B6CE43 /* VegasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB551BD8B53300B6CE43 /* VegasViewController.swift */; };
 		2747EB591BD8B53300B6CE43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2747EB571BD8B53300B6CE43 /* Main.storyboard */; };
 		2747EB5B1BD8B53300B6CE43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747EB5A1BD8B53300B6CE43 /* Assets.xcassets */; };
 		2747EB5E1BD8B53300B6CE43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2747EB5C1BD8B53300B6CE43 /* LaunchScreen.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		2747EB501BD8B53300B6CE43 /* Las Vegas 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Las Vegas 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747EB531BD8B53300B6CE43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2747EB551BD8B53300B6CE43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2747EB551BD8B53300B6CE43 /* VegasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegasViewController.swift; sourceTree = "<group>"; };
 		2747EB581BD8B53300B6CE43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2747EB5A1BD8B53300B6CE43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2747EB5D1BD8B53300B6CE43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -97,12 +97,8 @@
 		2747EB521BD8B53300B6CE43 /* Las Vegas 2 */ = {
 			isa = PBXGroup;
 			children = (
-				2747EB531BD8B53300B6CE43 /* AppDelegate.swift */,
-				2747EB551BD8B53300B6CE43 /* ViewController.swift */,
-				2747EB571BD8B53300B6CE43 /* Main.storyboard */,
-				2747EB5A1BD8B53300B6CE43 /* Assets.xcassets */,
-				2747EB5C1BD8B53300B6CE43 /* LaunchScreen.storyboard */,
-				2747EB5F1BD8B53300B6CE43 /* Info.plist */,
+				2747EB811BD8B61A00B6CE43 /* Controller */,
+				2747EB821BD8B64E00B6CE43 /* Supporting Files */,
 			);
 			path = "Las Vegas 2";
 			sourceTree = "<group>";
@@ -123,6 +119,26 @@
 				2747EB751BD8B53300B6CE43 /* Info.plist */,
 			);
 			path = "Las Vegas 2UITests";
+			sourceTree = "<group>";
+		};
+		2747EB811BD8B61A00B6CE43 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2747EB551BD8B53300B6CE43 /* VegasViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2747EB821BD8B64E00B6CE43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2747EB531BD8B53300B6CE43 /* AppDelegate.swift */,
+				2747EB571BD8B53300B6CE43 /* Main.storyboard */,
+				2747EB5A1BD8B53300B6CE43 /* Assets.xcassets */,
+				2747EB5C1BD8B53300B6CE43 /* LaunchScreen.storyboard */,
+				2747EB5F1BD8B53300B6CE43 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,7 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747EB561BD8B53300B6CE43 /* ViewController.swift in Sources */,
+				2747EB561BD8B53300B6CE43 /* VegasViewController.swift in Sources */,
 				2747EB541BD8B53300B6CE43 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
