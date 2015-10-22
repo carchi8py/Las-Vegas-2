@@ -9,9 +9,10 @@
 import UIKit
 import MapKit
 
-class VegasViewController: UIViewController {
+class VegasViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +21,30 @@ class VegasViewController: UIViewController {
         //Set Inital Location to Las Vegas
         let initialLocation = CLLocation(latitude: 36.1096745, longitude: -115.1735591)
         centerMapOnLocation(initialLocation)
+        
+        //Add a Long Press Gesture
+        let longPress = UILongPressGestureRecognizer(target: self, action: "didLongTapMap:")
+        longPress.delegate = self
+        longPress.numberOfTapsRequired = 0
+        longPress.minimumPressDuration= 0.4
+        mapView.addGestureRecognizer(longPress)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /***** Long Press Methods fo UIGestureRecognizerDelegate *****/
+    func didLongTapMap(gestureRecognizer: UIGestureRecognizer) {
+        let tapPoint: CGPoint = gestureRecognizer.locationInView(mapView)
+        let touchMapCoordinate: CLLocationCoordinate2D = mapView.convertPoint(tapPoint, toCoordinateFromView: mapView)
+        
+        if gestureRecognizer.state != .Ended {
+            return
+        }
+        
+        
     }
     
     /***** Helper Functions *****/
