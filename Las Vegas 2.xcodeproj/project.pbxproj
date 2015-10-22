@@ -14,6 +14,8 @@
 		2747EB5E1BD8B53300B6CE43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2747EB5C1BD8B53300B6CE43 /* LaunchScreen.storyboard */; };
 		2747EB691BD8B53300B6CE43 /* Las_Vegas_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB681BD8B53300B6CE43 /* Las_Vegas_2Tests.swift */; };
 		2747EB741BD8B53300B6CE43 /* Las_Vegas_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB731BD8B53300B6CE43 /* Las_Vegas_2UITests.swift */; };
+		2747EB851BD951F100B6CE43 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB841BD951F100B6CE43 /* Pin.swift */; settings = {ASSET_TAGS = (); }; };
+		2747EB871BD951F800B6CE43 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB861BD951F800B6CE43 /* Location.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		2747EB6F1BD8B53300B6CE43 /* Las Vegas 2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Las Vegas 2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747EB731BD8B53300B6CE43 /* Las_Vegas_2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Las_Vegas_2UITests.swift; sourceTree = "<group>"; };
 		2747EB751BD8B53300B6CE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2747EB841BD951F100B6CE43 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		2747EB861BD951F800B6CE43 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		2747EB521BD8B53300B6CE43 /* Las Vegas 2 */ = {
 			isa = PBXGroup;
 			children = (
+				2747EB831BD951E200B6CE43 /* Model */,
 				2747EB811BD8B61A00B6CE43 /* Controller */,
 				2747EB821BD8B64E00B6CE43 /* Supporting Files */,
 			);
@@ -139,6 +144,15 @@
 				2747EB5F1BD8B53300B6CE43 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2747EB831BD951E200B6CE43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2747EB841BD951F100B6CE43 /* Pin.swift */,
+				2747EB861BD951F800B6CE43 /* Location.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,7 +285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2747EB851BD951F100B6CE43 /* Pin.swift in Sources */,
 				2747EB561BD8B53300B6CE43 /* VegasViewController.swift in Sources */,
+				2747EB871BD951F800B6CE43 /* Location.swift in Sources */,
 				2747EB541BD8B53300B6CE43 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
