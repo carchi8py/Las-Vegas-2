@@ -26,7 +26,7 @@ class VegasViewController: UIViewController, UIGestureRecognizerDelegate {
         let longPress = UILongPressGestureRecognizer(target: self, action: "didLongTapMap:")
         longPress.delegate = self
         longPress.numberOfTapsRequired = 0
-        longPress.minimumPressDuration= 0.4
+        longPress.minimumPressDuration = 0.4
         mapView.addGestureRecognizer(longPress)
     }
 
@@ -43,6 +43,13 @@ class VegasViewController: UIViewController, UIGestureRecognizerDelegate {
         if gestureRecognizer.state != .Ended {
             return
         }
+        
+        let dictionary: [String: AnyObject] = [
+            Pin.Keys.Latitude = touchMapCoordinate.latitude
+            Pin.Keys.Longitude = touchMapCoordinate.longitude
+        ]
+        
+        
         
         
     }

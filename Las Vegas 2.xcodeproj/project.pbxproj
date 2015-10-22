@@ -16,6 +16,7 @@
 		2747EB741BD8B53300B6CE43 /* Las_Vegas_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB731BD8B53300B6CE43 /* Las_Vegas_2UITests.swift */; };
 		2747EB851BD951F100B6CE43 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB841BD951F100B6CE43 /* Pin.swift */; settings = {ASSET_TAGS = (); }; };
 		2747EB871BD951F800B6CE43 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB861BD951F800B6CE43 /* Location.swift */; settings = {ASSET_TAGS = (); }; };
+		2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		2747EB751BD8B53300B6CE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2747EB841BD951F100B6CE43 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		2747EB861BD951F800B6CE43 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		2747EB521BD8B53300B6CE43 /* Las Vegas 2 */ = {
 			isa = PBXGroup;
 			children = (
+				2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */,
 				2747EB831BD951E200B6CE43 /* Model */,
 				2747EB811BD8B61A00B6CE43 /* Controller */,
 				2747EB821BD8B64E00B6CE43 /* Supporting Files */,
@@ -288,6 +291,7 @@
 				2747EB851BD951F100B6CE43 /* Pin.swift in Sources */,
 				2747EB561BD8B53300B6CE43 /* VegasViewController.swift in Sources */,
 				2747EB871BD951F800B6CE43 /* Location.swift in Sources */,
+				2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */,
 				2747EB541BD8B53300B6CE43 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
