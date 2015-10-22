@@ -17,6 +17,7 @@
 		2747EB851BD951F100B6CE43 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB841BD951F100B6CE43 /* Pin.swift */; settings = {ASSET_TAGS = (); }; };
 		2747EB871BD951F800B6CE43 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB861BD951F800B6CE43 /* Location.swift */; settings = {ASSET_TAGS = (); }; };
 		2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */; settings = {ASSET_TAGS = (); }; };
+		2747EB8C1BD957CF00B6CE43 /* Vegas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB8A1BD957CF00B6CE43 /* Vegas.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		2747EB841BD951F100B6CE43 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		2747EB861BD951F800B6CE43 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		2747EB8B1BD957CF00B6CE43 /* Vegas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vegas.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				2747EB5A1BD8B53300B6CE43 /* Assets.xcassets */,
 				2747EB5C1BD8B53300B6CE43 /* LaunchScreen.storyboard */,
 				2747EB5F1BD8B53300B6CE43 /* Info.plist */,
+				2747EB8A1BD957CF00B6CE43 /* Vegas.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			files = (
 				2747EB851BD951F100B6CE43 /* Pin.swift in Sources */,
 				2747EB561BD8B53300B6CE43 /* VegasViewController.swift in Sources */,
+				2747EB8C1BD957CF00B6CE43 /* Vegas.xcdatamodeld in Sources */,
 				2747EB871BD951F800B6CE43 /* Location.swift in Sources */,
 				2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */,
 				2747EB541BD8B53300B6CE43 /* AppDelegate.swift in Sources */,
@@ -537,6 +541,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2747EB8A1BD957CF00B6CE43 /* Vegas.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2747EB8B1BD957CF00B6CE43 /* Vegas.xcdatamodel */,
+			);
+			currentVersion = 2747EB8B1BD957CF00B6CE43 /* Vegas.xcdatamodel */;
+			path = Vegas.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2747EB481BD8B53300B6CE43 /* Project object */;
 }
