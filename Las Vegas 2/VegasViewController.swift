@@ -8,8 +8,9 @@
 
 import UIKit
 import MapKit
+import CoreData
 
-class VegasViewController: UIViewController, UIGestureRecognizerDelegate {
+class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate {
 
     //The Map View Object
     @IBOutlet weak var mapView: MKMapView!
@@ -19,10 +20,18 @@ class VegasViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var pins = [Pin]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Make the view delgate the map
+        self.mapView.delegate = self
+        
+        //Fetch all Pins that we haev saved
+        pins = fetchAllPins()
+        
+        //Add pins to Map
+        addAllPinsToMap()
 
         //Set Inital Location to Las Vegas
         let initialLocation = CLLocation(latitude: 36.1096745, longitude: -115.1735591)
@@ -46,6 +55,7 @@ class VegasViewController: UIViewController, UIGestureRecognizerDelegate {
         }()
     
     /***** Long Press Methods fo UIGestureRecognizerDelegate *****/
+    
     //If the long tap gesture is fired, create a new pin in the location of the
     // Long tap, and store so we can retreive it later.
     func didLongTapMap(gestureRecognizer: UIGestureRecognizer) {
@@ -73,6 +83,32 @@ class VegasViewController: UIViewController, UIGestureRecognizerDelegate {
         dropPin.coordinate.longitude = pinToBeAdded.longitude
         mapView.addAnnotation(dropPin)
     }
+    
+    /***** Pin Functions *****/
+    
+    //Places all the existing pin on to the map
+    func addAllPinsToMap() {
+        for pin in pins {
+            var newPin = MKPointAnnotation()
+            newPin.coordinate.latitude = pin.latitude
+            newPin.coordinate.longitude = pin.longitude
+            mapView.addAnnotation(newPin)
+        }
+    }
+    
+    //Grabs all saved pins from Core Data
+    func fetchAllPins() -> [Pin] {
+        let fetchRequest = NSFetchRequest(entityName: "Pin")
+        let results: [AnyObject]?
+        do {
+            results = try sharedContext.executeFetchRequest(fetchRequest)
+        } catch {
+            print("Something bad happened")
+            results = nil
+        }
+        return results as! [Pin]
+    }
+    
     
     /***** Helper Functions *****/
 
