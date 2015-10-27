@@ -15,4 +15,16 @@ class TableViewController: UITableViewController {
     //Pin from Vegas View Map
     var selectedPin: Pin!
     
+    /***** Table view Controler methods *****/
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("foursquareCell", forIndexPath: indexPath)
+        cell.textLabel?.text = "Hi"
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
 }
