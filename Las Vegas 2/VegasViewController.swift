@@ -63,6 +63,27 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         return newPin
     }
     
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        let tabBar = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+        
+        let tableVC = tabBar.viewControllers?[0] as! TableViewController
+        
+        let pinCount = pins.count
+        var i = 0
+        var index: Int = 0
+        for i = 0; i < pinCount; i++ {
+            if view.annotation?.coordinate.latitude == pins[i].latitude && view.annotation?.coordinate.longitude == pins[i].longitude {
+                index = i
+            }
+        }
+        
+        let pin = pins[index]
+        
+        tableVC.selectedPin = pin
+        
+        self.navigationController?.pushViewController(tabBar, animated: true)
+    }
+    
     
     /***** Long Press Methods fo UIGestureRecognizerDelegate *****/
     
