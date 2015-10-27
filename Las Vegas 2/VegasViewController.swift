@@ -54,6 +54,16 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         CoreDataStackManager.sharedInstance().managedObjectContext
         }()
     
+    /***** Map View Methods *****/
+    
+    //create and animate a new Pin
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        var newPin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Pin1")
+        newPin.animatesDrop = true
+        return newPin
+    }
+    
+    
     /***** Long Press Methods fo UIGestureRecognizerDelegate *****/
     
     //If the long tap gesture is fired, create a new pin in the location of the
@@ -103,20 +113,20 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         do {
             results = try sharedContext.executeFetchRequest(fetchRequest)
         } catch {
+            //TODO: Added a real error handling here.
             print("Something bad happened")
             results = nil
         }
         return results as! [Pin]
     }
     
-    
     /***** Helper Functions *****/
 
     let regionRadius: CLLocationDistance = 1000
+    //Create a bounding box for our map
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
             regionRadius * 3.2, regionRadius * 3.2)
         mapView.setRegion(coordinateRegion, animated: true)
     }
 }
-
