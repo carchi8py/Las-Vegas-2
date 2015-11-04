@@ -14,11 +14,13 @@
 		2747EB5E1BD8B53300B6CE43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2747EB5C1BD8B53300B6CE43 /* LaunchScreen.storyboard */; };
 		2747EB691BD8B53300B6CE43 /* Las_Vegas_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB681BD8B53300B6CE43 /* Las_Vegas_2Tests.swift */; };
 		2747EB741BD8B53300B6CE43 /* Las_Vegas_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB731BD8B53300B6CE43 /* Las_Vegas_2UITests.swift */; };
-		2747EB851BD951F100B6CE43 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB841BD951F100B6CE43 /* Pin.swift */; settings = {ASSET_TAGS = (); }; };
-		2747EB871BD951F800B6CE43 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB861BD951F800B6CE43 /* Location.swift */; settings = {ASSET_TAGS = (); }; };
-		2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */; settings = {ASSET_TAGS = (); }; };
-		2747EB8C1BD957CF00B6CE43 /* Vegas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB8A1BD957CF00B6CE43 /* Vegas.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
-		2747EB8E1BDF088F00B6CE43 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB8D1BDF088F00B6CE43 /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2747EB851BD951F100B6CE43 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB841BD951F100B6CE43 /* Pin.swift */; };
+		2747EB871BD951F800B6CE43 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB861BD951F800B6CE43 /* Location.swift */; };
+		2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */; };
+		2747EB8C1BD957CF00B6CE43 /* Vegas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB8A1BD957CF00B6CE43 /* Vegas.xcdatamodeld */; };
+		2747EB8E1BDF088F00B6CE43 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB8D1BDF088F00B6CE43 /* TableViewController.swift */; };
+		27FD7B0A1BE9963C00DF82B4 /* FoursquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD7B091BE9963C00DF82B4 /* FoursquareClient.swift */; };
+		27FD7B0C1BE9964D00DF82B4 /* FoursquareConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD7B0B1BE9964D00DF82B4 /* FoursquareConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		2747EB8B1BD957CF00B6CE43 /* Vegas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vegas.xcdatamodel; sourceTree = "<group>"; };
 		2747EB8D1BDF088F00B6CE43 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		27FD7B091BE9963C00DF82B4 /* FoursquareClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareClient.swift; sourceTree = "<group>"; };
+		27FD7B0B1BE9964D00DF82B4 /* FoursquareConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,10 +162,20 @@
 		2747EB831BD951E200B6CE43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				27FD7B081BE9962800DF82B4 /* Foursquare */,
 				2747EB841BD951F100B6CE43 /* Pin.swift */,
 				2747EB861BD951F800B6CE43 /* Location.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		27FD7B081BE9962800DF82B4 /* Foursquare */ = {
+			isa = PBXGroup;
+			children = (
+				27FD7B091BE9963C00DF82B4 /* FoursquareClient.swift */,
+				27FD7B0B1BE9964D00DF82B4 /* FoursquareConstants.swift */,
+			);
+			name = Foursquare;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,11 +308,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FD7B0C1BE9964D00DF82B4 /* FoursquareConstants.swift in Sources */,
 				2747EB851BD951F100B6CE43 /* Pin.swift in Sources */,
 				2747EB8E1BDF088F00B6CE43 /* TableViewController.swift in Sources */,
 				2747EB561BD8B53300B6CE43 /* VegasViewController.swift in Sources */,
 				2747EB8C1BD957CF00B6CE43 /* Vegas.xcdatamodeld in Sources */,
 				2747EB871BD951F800B6CE43 /* Location.swift in Sources */,
+				27FD7B0A1BE9963C00DF82B4 /* FoursquareClient.swift in Sources */,
 				2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */,
 				2747EB541BD8B53300B6CE43 /* AppDelegate.swift in Sources */,
 			);
@@ -527,6 +543,7 @@
 				2747EB7A1BD8B53300B6CE43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2747EB7B1BD8B53300B6CE43 /* Build configuration list for PBXNativeTarget "Las Vegas 2Tests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +552,7 @@
 				2747EB7D1BD8B53300B6CE43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2747EB7E1BD8B53300B6CE43 /* Build configuration list for PBXNativeTarget "Las Vegas 2UITests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +561,7 @@
 				2747EB801BD8B53300B6CE43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
