@@ -30,4 +30,9 @@ extension FoursquareClient {
         static let secret = "client_secret"
         static let version = "v"
     }
+    
+    struct returnKeys {
+        static let response = "response"
+        static let venues = "venues"
+    }
 }
