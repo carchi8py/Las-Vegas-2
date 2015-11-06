@@ -45,6 +45,7 @@ class FoursquareClient: NSObject {
                     if let jsonResults = jsonData[FoursquareClient.returnKeys.response] as? NSDictionary {
                         if let venues = jsonResults[FoursquareClient.returnKeys.venues] as? NSArray {
                             //Each element in this array is a new venue and we will save it as a location
+                            var i = 0
                             for venueDictionary in venues {
                                 let name = venueDictionary.valueForKey(returnKeys.name) as? String
                                 //The lat and Long are inside a dictionary called location we are going to need to go down another layer to get them
@@ -63,13 +64,14 @@ class FoursquareClient: NSObject {
                                 let stats = venueDictionary.valueForKey(returnKeys.stats) as? NSDictionary
                                 let checkinsCount = stats?.valueForKey(returnKeys.checkinsCount) as? Int
                                 let foursquareID = venueDictionary.valueForKey(returnKeys.foursquareID) as? String
-                                
                                 let newVenue = Location(name: name!, latitude: latitude!, longitude: longitude!, url: url!, hereNow: count!, totalCheckins: checkinsCount!, foursquareID: foursquareID!, pin: pin, context: self.sharedContext)
                                 
                                 dispatch_async(dispatch_get_main_queue(),{
                                     CoreDataStackManager.sharedInstance().saveContext()
                                     })
+                                i += 1
                             }
+                            print("\(i)")
                             completionHandler(success: true, array: venues as! [[String : AnyObject]], error: nil)
                         } else {
                             completionHandler(success: false, array: nil, error: nil)
