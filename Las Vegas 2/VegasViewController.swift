@@ -106,6 +106,9 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         
         self.pins.append(pinToBeAdded)
         
+        //Download Venues from foursquare
+        downloadFromFourSquare(pinToBeAdded)
+        
         //Save the pin in to core data so that it can be recreated in the app is quit
         CoreDataStackManager.sharedInstance().saveContext()
         
@@ -113,6 +116,15 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         dropPin.coordinate.latitude = pinToBeAdded.latitude
         dropPin.coordinate.longitude = pinToBeAdded.longitude
         mapView.addAnnotation(dropPin)
+    }
+    
+    /***** Download functions *****/
+    func downloadFromFourSquare(pin: Pin){
+        let ll = "\(pin.latitude),\(pin.longitude)"
+        FoursquareClient.sharedInstance().searchFourSquare(ll, completionHandler: {
+            success, data, error in
+            print(data)
+        })
     }
     
     /***** Pin Functions *****/

@@ -15,6 +15,11 @@ class TableViewController: UITableViewController {
     //Pin from Vegas View Map
     var selectedPin: Pin!
     
+    //Code Data Convenience
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
+    
     /***** Table view Controler methods *****/
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
