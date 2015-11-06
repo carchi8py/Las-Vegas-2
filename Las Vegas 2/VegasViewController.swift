@@ -121,9 +121,14 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
     /***** Download functions *****/
     func downloadFromFourSquare(pin: Pin){
         let ll = "\(pin.latitude),\(pin.longitude)"
-        FoursquareClient.sharedInstance().searchFourSquare(ll, completionHandler: {
+        FoursquareClient.sharedInstance().searchFourSquare(ll, pin: pin, completionHandler: {
             success, data, error in
-            print(data)
+            if success {
+                
+            } else {
+                //TODO: Add some real Error Handling here.
+                print("Something bad happened")
+            }
         })
     }
     

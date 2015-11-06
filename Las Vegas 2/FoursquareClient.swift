@@ -17,9 +17,13 @@ class FoursquareClient: NSObject {
         session = NSURLSession.sharedSession()
     }
     
+    lazy var sharedContext = {
+        CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
+    
     /***** Foursquare Calls *****/
      
-    func searchFourSquare(ll: String, completionHandler: (success: Bool, array: [[String: AnyObject]]?, error:NSError?) -> Void) {
+    func searchFourSquare(ll: String, pin: Pin, completionHandler: (success: Bool, array: [[String: AnyObject]]?, error:NSError?) -> Void) {
         
         let parameters: [String: AnyObject] = [
             FoursquareClient.JSONKeys.latLog: ll,
@@ -39,8 +43,34 @@ class FoursquareClient: NSObject {
                 do {
                     let jsonData = try NSJSONSerialization.JSONObjectWithData(JSONResults! as! NSData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     if let jsonResults = jsonData[FoursquareClient.returnKeys.response] as? NSDictionary {
-                        if let venues = jsonResults[FoursquareClient.returnKeys.venues] as? [[String:AnyObject]] {
-                            completionHandler(success: true, array: venues, error: nil)
+                        if let venues = jsonResults[FoursquareClient.returnKeys.venues] as? NSArray {
+                            //Each element in this array is a new venue and we will save it as a location
+                            for venueDictionary in venues {
+                                let name = venueDictionary.valueForKey(returnKeys.name) as? String
+                                //The lat and Long are inside a dictionary called location we are going to need to go down another layer to get them
+                                let location = venueDictionary.valueForKey(returnKeys.location) as? NSDictionary
+                                let latitude = location?.valueForKey(returnKeys.latitude) as? Double
+                                let longitude = location?.valueForKey(returnKeys.longitude) as? Double
+                                // Some places don't have a URL will need to handle that
+                                var url = venueDictionary.valueForKey(returnKeys.url) as? String
+                                if url == nil {
+                                    url = ""
+                                }
+                                //Here now is inside a dictionary called HereNow.
+                                let hereNow = venueDictionary.valueForKey(returnKeys.hereNow) as? NSDictionary
+                                let count = hereNow?.valueForKey(returnKeys.count) as? Int
+                                // Total Checkins are in a dictionary called Stats
+                                let stats = venueDictionary.valueForKey(returnKeys.stats) as? NSDictionary
+                                let checkinsCount = stats?.valueForKey(returnKeys.checkinsCount) as? Int
+                                let foursquareID = venueDictionary.valueForKey(returnKeys.foursquareID) as? String
+                                
+                                let newVenue = Location(name: name!, latitude: latitude!, longitude: longitude!, url: url!, hereNow: count!, totalCheckins: checkinsCount!, foursquareID: foursquareID!, pin: pin, context: self.sharedContext)
+                                
+                                dispatch_async(dispatch_get_main_queue(),{
+                                    CoreDataStackManager.sharedInstance().saveContext()
+                                    })
+                            }
+                            completionHandler(success: true, array: venues as! [[String : AnyObject]], error: nil)
                         } else {
                             completionHandler(success: false, array: nil, error: nil)
                         }

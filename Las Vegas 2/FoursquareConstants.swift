@@ -34,5 +34,16 @@ extension FoursquareClient {
     struct returnKeys {
         static let response = "response"
         static let venues = "venues"
+        
+        static let name = "name"
+        static let latitude = "lat"
+        static let longitude = "lng"
+        static let url = "url"
+        static let hereNow = "hereNow"
+        static let count = "count"
+        static let stats = "stats"
+        static let checkinsCount = "checkinsCount"
+        static let foursquareID = "id"
+        static let location = "location"
     }
 }
