@@ -47,24 +47,58 @@ class FoursquareClient: NSObject {
                             //Each element in this array is a new venue and we will save it as a location
                             var i = 0
                             for venueDictionary in venues {
+                                print("\(venueDictionary)")
                                 let name = venueDictionary.valueForKey(returnKeys.name) as? String
+                                //if Name is nil we don't want to use this location (this shouldn't happen)
+                                if name == nil {
+                                    continue
+                                }
+                                
+                                let foursquareID = venueDictionary.valueForKey(returnKeys.foursquareID) as? String
+                                //If there is no foursquareID we don't want to use this location (this shouldn't happen)
+                                if foursquareID == nil {
+                                    continue
+                                }
+                                
                                 //The lat and Long are inside a dictionary called location we are going to need to go down another layer to get them
                                 let location = venueDictionary.valueForKey(returnKeys.location) as? NSDictionary
+                                //If there is no location for a foursquare venue we want to skip it.
+                                if location == nil {
+                                    continue
+                                }
                                 let latitude = location?.valueForKey(returnKeys.latitude) as? Double
+                                //If there is no latitude we don't want to use this location
+                                if latitude == nil {
+                                    continue
+                                }
                                 let longitude = location?.valueForKey(returnKeys.longitude) as? Double
+                                //if there is no logitude we don't want to use this location
+                                if longitude == nil {
+                                    continue
+                                }
+                                
                                 // Some places don't have a URL will need to handle that
                                 var url = venueDictionary.valueForKey(returnKeys.url) as? String
                                 if url == nil {
                                     url = ""
                                 }
+                                
                                 //Here now is inside a dictionary called HereNow.
                                 let hereNow = venueDictionary.valueForKey(returnKeys.hereNow) as? NSDictionary
-                                let count = hereNow?.valueForKey(returnKeys.count) as? Int
+                                // If hereNow dosn't exist we want count to equal 0
+                                var count = 0
+                                if hereNow != nil {
+                                    count = hereNow?.valueForKey(returnKeys.count) as! Int
+                                }
+                                
                                 // Total Checkins are in a dictionary called Stats
                                 let stats = venueDictionary.valueForKey(returnKeys.stats) as? NSDictionary
-                                let checkinsCount = stats?.valueForKey(returnKeys.checkinsCount) as? Int
-                                let foursquareID = venueDictionary.valueForKey(returnKeys.foursquareID) as? String
-                                let newVenue = Location(name: name!, latitude: latitude!, longitude: longitude!, url: url!, hereNow: count!, totalCheckins: checkinsCount!, foursquareID: foursquareID!, pin: pin, context: self.sharedContext)
+                                var checkinsCount = 0
+                                if stats != nil {
+                                        checkinsCount = stats?.valueForKey(returnKeys.checkinsCount) as! Int
+                                }
+                                let newVenue = Location(name: name!, latitude: latitude!, longitude: longitude!, url: url!, hereNow: count, totalCheckins: checkinsCount, foursquareID: foursquareID!, pin: pin, context: self.sharedContext)
+                                print("New Venus created \(i)")
                                 
                                 dispatch_async(dispatch_get_main_queue(),{
                                     CoreDataStackManager.sharedInstance().saveContext()
