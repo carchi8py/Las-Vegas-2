@@ -45,9 +45,7 @@ class FoursquareClient: NSObject {
                     if let jsonResults = jsonData[FoursquareClient.returnKeys.response] as? NSDictionary {
                         if let venues = jsonResults[FoursquareClient.returnKeys.venues] as? NSArray {
                             //Each element in this array is a new venue and we will save it as a location
-                            var i = 0
                             for venueDictionary in venues {
-                                print("\(venueDictionary)")
                                 let name = venueDictionary.valueForKey(returnKeys.name) as? String
                                 //if Name is nil we don't want to use this location (this shouldn't happen)
                                 if name == nil {
@@ -98,14 +96,11 @@ class FoursquareClient: NSObject {
                                         checkinsCount = stats?.valueForKey(returnKeys.checkinsCount) as! Int
                                 }
                                 let newVenue = Location(name: name!, latitude: latitude!, longitude: longitude!, url: url!, hereNow: count, totalCheckins: checkinsCount, foursquareID: foursquareID!, pin: pin, context: self.sharedContext)
-                                print("New Venus created \(i)")
                                 
                                 dispatch_async(dispatch_get_main_queue(),{
                                     CoreDataStackManager.sharedInstance().saveContext()
                                     })
-                                i += 1
                             }
-                            print("\(i)")
                             completionHandler(success: true, array: venues as! [[String : AnyObject]], error: nil)
                         } else {
                             completionHandler(success: false, array: nil, error: nil)
