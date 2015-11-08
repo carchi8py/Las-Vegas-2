@@ -145,7 +145,12 @@ class FoursquareClient: NSObject {
                     if let response = jsonResults.valueForKey(FoursquareClient.returnKeys.response) as? NSDictionary {
                         if let photos = response.valueForKey(FoursquareClient.returnKeys.photos) as? NSDictionary {
                             if let items = photos.valueForKey(FoursquareClient.returnKeys.items) as? NSArray {
+                                var done = false
                                 for item in items {
+                                    //We only want to download the first images (not sure how to tell fourquare to return just one image
+                                    if done {
+                                        break
+                                    }
                                     let prefix = item.valueForKey(FoursquareClient.returnKeys.prefix) as! String
                                     let suffix = item.valueForKey(FoursquareClient.returnKeys.suffix) as! String
                                     
@@ -160,8 +165,8 @@ class FoursquareClient: NSObject {
                                                 CoreDataStackManager.sharedInstance().saveContext()
                                             })
                                         })
-                                        
                                     }
+                                    done = true
                                 }
                                 completionHnadler(success: true, error: nil)
                             } else {
