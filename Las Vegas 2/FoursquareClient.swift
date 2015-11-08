@@ -151,7 +151,22 @@ class FoursquareClient: NSObject {
                                     
                                     let photoUrl = prefix + "250x250" + suffix
                                     print("\(photoUrl)")
+                                    self.sharedContext.performBlock{
+                                        let newPhoto = Photo(photoUrl: photoUrl, location: location, context: self.sharedContext)
+                                        
+                                        self.savePhotoToDisk(newPhoto, completionHandler: {
+                                            success, error in
+                                            
+                                            dispatch_async(dispatch_get_main_queue(), {
+                                                CoreDataStackManager.sharedInstance().saveContext()
+                                            })
+                                        })
+                                        
+                                    }
                                 }
+                                completionHnadler(success: true, error: nil)
+                            } else {
+                                completionHnadler(success: false, error: nil)
                             }
                         }
                     }
@@ -161,6 +176,37 @@ class FoursquareClient: NSObject {
             }
         }
         
+    }
+    
+    func savePhotoToDisk(photo: Photo, completionHandler: (success :Bool, error: NSError?) -> Void) {
+        
+        let photoUrl = photo.photoUrl
+        let photoRequest = NSURLRequest(URL: NSURL(string: photoUrl)!)
+        
+        let task = session.dataTaskWithRequest(photoRequest) {
+            data, resonse, error in
+            
+            if let error = error {
+                print("Something bad happend")
+                completionHandler(success: false, error: error)
+            } else {
+                if let photoToSave = data {
+                    let fileName = photoUrl.lastPathComponent
+                    let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+                    let pathArray = [dirPath, fileName]
+                    let fileUrl = NSURL.fileURLWithPathComponents(pathArray)!
+                    print("\(fileUrl.path)")
+                    
+                    NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: photoToSave, attributes: nil)
+                    
+                    self.sharedContext.performBlockAndWait {
+                        photo.filePath = fileUrl.path!
+                    }
+                    completionHandler(success: true, error: nil)
+                }
+            }
+        }
+        task.resume()
     }
     
     func taskWithParameters(method: String, paramters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {

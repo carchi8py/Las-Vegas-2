@@ -8,7 +8,13 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalCheckins" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Photo" inverseName="location" inverseEntity="Photo" syncable="YES"/>
         <relationship name="pin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="locations" inverseEntity="Pin" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="filePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="location" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Location" inverseName="photos" inverseEntity="Location" syncable="YES"/>
     </entity>
     <entity name="Pin" representedClassName="Pin" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -16,7 +22,8 @@
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="pin" inverseEntity="Location" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Location" positionX="-54" positionY="9" width="128" height="165"/>
+        <element name="Location" positionX="-54" positionY="9" width="128" height="180"/>
         <element name="Pin" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Photo" positionX="-63" positionY="63" width="128" height="90"/>
     </elements>
 </model>

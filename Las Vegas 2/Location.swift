@@ -21,6 +21,7 @@ class Location: NSManagedObject {
     @NSManaged var totalCheckins: Int
     @NSManaged var foursquareID: String
     @NSManaged var pin: Pin
+    @NSManaged var photos: NSMutableOrderedSet
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -39,6 +40,7 @@ class Location: NSManagedObject {
         self.totalCheckins = totalCheckins
         self.foursquareID = foursquareID
         self.pin = pin
+        self.photos = NSMutableOrderedSet()
     }
     
 }
