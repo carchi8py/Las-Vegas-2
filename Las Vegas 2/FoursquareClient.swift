@@ -46,6 +46,7 @@ class FoursquareClient: NSObject {
                         if let venues = jsonResults[FoursquareClient.returnKeys.venues] as? NSArray {
                             //Each element in this array is a new venue and we will save it as a location
                             for venueDictionary in venues {
+                                print("\(venueDictionary)")
                                 let name = venueDictionary.valueForKey(returnKeys.name) as? String
                                 //if Name is nil we don't want to use this location (this shouldn't happen)
                                 if name == nil {

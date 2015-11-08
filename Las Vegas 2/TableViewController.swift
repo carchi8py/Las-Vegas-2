@@ -20,6 +20,14 @@ class TableViewController: UITableViewController {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
+    override func viewDidLoad() {
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     /***** Core Data Functions *****/
     //Grab all Locations that match the pin
     func fetchAllLocations() -> [Location] {
