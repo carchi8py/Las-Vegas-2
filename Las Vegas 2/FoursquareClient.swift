@@ -150,7 +150,7 @@ class FoursquareClient: NSObject {
                                     let suffix = item.valueForKey(FoursquareClient.returnKeys.suffix) as! String
                                     
                                     let photoUrl = prefix + "250x250" + suffix
-                                    self.sharedContext.performBlock{
+                                    self.sharedContext.performBlockAndWait{
                                         let newPhoto = Photo(photoUrl: photoUrl, location: location, context: self.sharedContext)
                                         
                                         self.savePhotoToDisk(newPhoto, completionHandler: {

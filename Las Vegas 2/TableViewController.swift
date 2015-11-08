@@ -79,19 +79,21 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("foursquareCell", forIndexPath: indexPath)
         let venue = fetchAllLocations()[indexPath.row]
         
-        let photo = fetchAllPhotos(venue)[indexPath.row]
-        print("\(photo)")
-        print("\(photo.image)")
+        let photos = fetchAllPhotos(venue)
+        var photo: Photo
+        if photos.count > 0 {
+            photo = photos[0]
+            if photo.image != nil {
+                let photoSize = CGSize(width: 250, height: 250)
+                cell.imageView?.sizeThatFits(photoSize)
+                cell.imageView?.image = photo.image
+            }
+        } else {
+            cell.imageView?.image = UIImage(named: "placeholder")
+        }
         
         cell.textLabel?.text = venue.name
         cell.detailTextLabel?.text = "Here now \(venue.hereNow), Total Checkins \(venue.totalCheckins)"
-        
-        if photo.image != nil {
-            let photoSize = CGSize(width: 250, height: 250)
-            cell.imageView?.sizeThatFits(photoSize)
-            cell.imageView?.image = photo.image
-        }
-        
         
         return cell
     }
