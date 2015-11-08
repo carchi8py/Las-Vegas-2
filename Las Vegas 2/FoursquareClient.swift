@@ -32,7 +32,7 @@ class FoursquareClient: NSObject {
             FoursquareClient.JSONKeys.version: FoursquareClient.Constants.fsVersion
         ]
         
-        let task = taskForFourSquareGetMethod(FoursquareClient.Methods.search, paramters: parameters) {
+        let task = taskWithParameters(FoursquareClient.Methods.search, paramters: parameters) {
             JSONResults, error in
             if let error = error {
                 print("Something bad happend")
@@ -46,7 +46,6 @@ class FoursquareClient: NSObject {
                         if let venues = jsonResults[FoursquareClient.returnKeys.venues] as? NSArray {
                             //Each element in this array is a new venue and we will save it as a location
                             for venueDictionary in venues {
-                                print("\(venueDictionary)")
                                 let name = venueDictionary.valueForKey(returnKeys.name) as? String
                                 //if Name is nil we don't want to use this location (this shouldn't happen)
                                 if name == nil {
@@ -96,11 +95,20 @@ class FoursquareClient: NSObject {
                                 if stats != nil {
                                         checkinsCount = stats?.valueForKey(returnKeys.checkinsCount) as! Int
                                 }
-                                let newVenue = Location(name: name!, latitude: latitude!, longitude: longitude!, url: url!, hereNow: count, totalCheckins: checkinsCount, foursquareID: foursquareID!, pin: pin, context: self.sharedContext)
                                 
-                                dispatch_async(dispatch_get_main_queue(),{
-                                    CoreDataStackManager.sharedInstance().saveContext()
+                                self.sharedContext.performBlockAndWait {
+                                
+                                    let newLocation = Location(name: name!, latitude: latitude!, longitude: longitude!, url: url!, hereNow: count, totalCheckins: checkinsCount, foursquareID: foursquareID!, pin: pin, context: self.sharedContext)
+                                
+                                    //Now that we have the Venue we need to save picture for it
+                                    self.downloadPhotosFromFourSqaure(newLocation, completionHnadler: {
+                                        success, error in
+                                    
+                                        dispatch_async(dispatch_get_main_queue(),{
+                                            CoreDataStackManager.sharedInstance().saveContext()
+                                        })
                                     })
+                                }
                             }
                             completionHandler(success: true, array: venues as! [[String : AnyObject]], error: nil)
                         } else {
@@ -116,10 +124,67 @@ class FoursquareClient: NSObject {
         }
     }
     
-    func taskForFourSquareGetMethod(method: String, paramters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func downloadPhotosFromFourSqaure(location: Location, completionHnadler: (success: Bool, error: NSError?) -> Void)
+    {
+        let parameters: [String: AnyObject] = [
+            FoursquareClient.JSONKeys.clientID: FoursquareClient.Constants.clientID,
+            FoursquareClient.JSONKeys.secret: FoursquareClient.Constants.secret,
+            FoursquareClient.JSONKeys.version: FoursquareClient.Constants.fsVersion
+        ]
+        
+        let urlString = FoursquareClient.Constants.baseURL + location.foursquareID + "/photos" + FoursquareClient.escapedParameters(parameters)
+        let task = taskWithOutParameters(urlString){
+            results, error in
+            
+            if let error = error{
+                print("Something bad happened")
+                completionHnadler(success: false, error: error)
+            } else {
+                do {
+                    let jsonResults = try NSJSONSerialization.JSONObjectWithData(results! as! NSData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    if let response = jsonResults.valueForKey(FoursquareClient.returnKeys.response) as? NSDictionary {
+                        if let photos = response.valueForKey(FoursquareClient.returnKeys.photos) as? NSDictionary {
+                            if let items = photos.valueForKey(FoursquareClient.returnKeys.items) as? NSArray {
+                                for item in items {
+                                    let prefix = item.valueForKey(FoursquareClient.returnKeys.prefix) as! String
+                                    let suffix = item.valueForKey(FoursquareClient.returnKeys.suffix) as! String
+                                    
+                                    let photoUrl = prefix + "250x250" + suffix
+                                    print("\(photoUrl)")
+                                }
+                            }
+                        }
+                    }
+                } catch {
+                    completionHnadler(success: false, error: nil)
+                }
+            }
+        }
+        
+    }
+    
+    func taskWithParameters(method: String, paramters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         let mutableParameters = paramters
         
         let urlString = FoursquareClient.Constants.baseURL + method + FoursquareClient.escapedParameters(mutableParameters)
+        let url = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
+        
+        let task = session.dataTaskWithRequest(request) {
+            data, response, downloadError in
+            
+            if let error = downloadError {
+                completionHandler(result: nil, error: error)
+            } else {
+                completionHandler(result: data, error: nil)
+            }
+        }
+        task.resume()
+        return task
+    }
+    
+    func taskWithOutParameters(urlString: String, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
         let url = NSURL(string: urlString)!
         let request = NSMutableURLRequest(URL: url)
         

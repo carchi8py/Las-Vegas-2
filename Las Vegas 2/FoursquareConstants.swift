@@ -45,5 +45,10 @@ extension FoursquareClient {
         static let checkinsCount = "checkinsCount"
         static let foursquareID = "id"
         static let location = "location"
+        
+        static let photos = "photos"
+        static let items = "items"
+        static let prefix = "prefix"
+        static let suffix = "suffix"
     }
 }
