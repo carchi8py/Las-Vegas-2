@@ -53,9 +53,10 @@ class TableViewController: UITableViewController {
     }
     
     // Grab all Foursquare Photos that match the pin
-    func fetchAllPhotos() -> [Photo] {
+    func fetchAllPhotos(venue: Location) -> [Photo] {
         let error: NSErrorPointer = nil
         let fetchRequest = NSFetchRequest(entityName: "Photo")
+        fetchRequest.predicate = NSPredicate(format: "location == %@", venue)
         
         let results: [AnyObject]?
         do {
@@ -78,7 +79,9 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("foursquareCell", forIndexPath: indexPath)
         let venue = fetchAllLocations()[indexPath.row]
         
-        let photo = fetchAllPhotos()[indexPath.row]
+        let photo = fetchAllPhotos(venue)[indexPath.row]
+        print("\(photo)")
+        print("\(photo.image)")
         
         cell.textLabel?.text = venue.name
         cell.detailTextLabel?.text = "Here now \(venue.hereNow), Total Checkins \(venue.totalCheckins)"
