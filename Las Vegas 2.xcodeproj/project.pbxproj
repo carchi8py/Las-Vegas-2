@@ -21,6 +21,7 @@
 		2747EB8E1BDF088F00B6CE43 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB8D1BDF088F00B6CE43 /* TableViewController.swift */; };
 		27FD7B0A1BE9963C00DF82B4 /* FoursquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD7B091BE9963C00DF82B4 /* FoursquareClient.swift */; };
 		27FD7B0C1BE9964D00DF82B4 /* FoursquareConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD7B0B1BE9964D00DF82B4 /* FoursquareConstants.swift */; };
+		27FD7B0E1BEFD52C00DF82B4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD7B0D1BEFD52C00DF82B4 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		2747EB8D1BDF088F00B6CE43 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		27FD7B091BE9963C00DF82B4 /* FoursquareClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareClient.swift; sourceTree = "<group>"; };
 		27FD7B0B1BE9964D00DF82B4 /* FoursquareConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareConstants.swift; sourceTree = "<group>"; };
+		27FD7B0D1BEFD52C00DF82B4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				27FD7B081BE9962800DF82B4 /* Foursquare */,
 				2747EB841BD951F100B6CE43 /* Pin.swift */,
 				2747EB861BD951F800B6CE43 /* Location.swift */,
+				27FD7B0D1BEFD52C00DF82B4 /* Photo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				2747EB851BD951F100B6CE43 /* Pin.swift in Sources */,
 				2747EB8E1BDF088F00B6CE43 /* TableViewController.swift in Sources */,
 				2747EB561BD8B53300B6CE43 /* VegasViewController.swift in Sources */,
+				27FD7B0E1BEFD52C00DF82B4 /* Photo.swift in Sources */,
 				2747EB8C1BD957CF00B6CE43 /* Vegas.xcdatamodeld in Sources */,
 				2747EB871BD951F800B6CE43 /* Location.swift in Sources */,
 				27FD7B0A1BE9963C00DF82B4 /* FoursquareClient.swift in Sources */,
