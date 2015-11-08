@@ -150,7 +150,6 @@ class FoursquareClient: NSObject {
                                     let suffix = item.valueForKey(FoursquareClient.returnKeys.suffix) as! String
                                     
                                     let photoUrl = prefix + "250x250" + suffix
-                                    print("\(photoUrl)")
                                     self.sharedContext.performBlock{
                                         let newPhoto = Photo(photoUrl: photoUrl, location: location, context: self.sharedContext)
                                         
@@ -195,7 +194,6 @@ class FoursquareClient: NSObject {
                     let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
                     let pathArray = [dirPath, fileName]
                     let fileUrl = NSURL.fileURLWithPathComponents(pathArray)!
-                    print("\(fileUrl.path)")
                     
                     NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: photoToSave, attributes: nil)
                     
