@@ -25,7 +25,7 @@ class Photo: NSManagedObject {
             }
             
             let fileName = filePath.lastPathComponent
-            let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true)[0]
+            let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
             let pathArray = [dirPath, fileName]
             let fileUrl = NSURL.fileURLWithPathComponents(pathArray)!
             

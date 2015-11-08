@@ -52,13 +52,43 @@ class TableViewController: UITableViewController {
         return results as! [Location]
     }
     
+    // Grab all Foursquare Photos that match the pin
+    func fetchAllPhotos() -> [Photo] {
+        let error: NSErrorPointer = nil
+        let fetchRequest = NSFetchRequest(entityName: "Photo")
+        
+        let results: [AnyObject]?
+        do {
+            results = try sharedContext.executeFetchRequest(fetchRequest)
+        } catch let tryError as NSError {
+            error.memory = tryError
+            results = nil
+        }
+        
+        if error != nil {
+            print("Unable to get saved data \(error.debugDescription)")
+        }
+        
+        return results as![Photo]
+    }
+    
     /***** Table view Controler methods *****/
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("foursquareCell", forIndexPath: indexPath)
         let venue = fetchAllLocations()[indexPath.row]
+        
+        let photo = fetchAllPhotos()[indexPath.row]
+        
         cell.textLabel?.text = venue.name
         cell.detailTextLabel?.text = "Here now \(venue.hereNow), Total Checkins \(venue.totalCheckins)"
+        
+        if photo.image != nil {
+            let photoSize = CGSize(width: 250, height: 250)
+            cell.imageView?.sizeThatFits(photoSize)
+            cell.imageView?.image = photo.image
+        }
+        
         
         return cell
     }
