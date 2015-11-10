@@ -10,7 +10,76 @@ import Foundation
 import MapKit
 import CoreData
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
+    
+    //Pin from Vegas View Map
+    var selectedPin: Pin!
+    
+    var locations = [Location]()
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Make the view delgate the map
+        self.mapView.delegate = self
+        
+        //Set Inital Location to Las Vegas
+        let initialLocation = CLLocation(latitude: 36.1096745, longitude: -115.1735591)
+        centerMapOnLocation(initialLocation)
+        
+        locations = fetchAllLocations()
+        
+        //Add Locations to Map
+        addAllLocationsToMap()
+    }
+    
+    /***** Core Data Functions *****/
+     //Grab all Locations that match the pin
+    func fetchAllLocations() -> [Location] {
+        
+        let error: NSErrorPointer = nil
+        let fetchRequest = NSFetchRequest(entityName: "Location")
+        fetchRequest.predicate = NSPredicate(format: "pin == %@", self.selectedPin)
+        fetchRequest.sortDescriptors = []
+        
+        let results: [AnyObject]?
+        do {
+            results = try sharedContext.executeFetchRequest(fetchRequest)
+        } catch let tryError as NSError {
+            error.memory = tryError
+            results = nil
+        }
+        
+        if error != nil {
+            print("Unable to get saved data \(error.debugDescription)")
+        }
+        
+        return results as! [Location]
+    }
+    
+    lazy var sharedContext = {
+        CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
+    
+    /***** Location Functions *****/
+    func addAllLocationsToMap() {
+        for location in locations {
+            var newPin = MKPointAnnotation()
+            newPin.coordinate.latitude = location.latitude
+            newPin.coordinate.longitude = location.longitude
+            mapView.addAnnotation(newPin)
+        }
+    }
+    
+    /***** Helper Functions *****/
+    
+    let regionRadius: CLLocationDistance = 1000
+    //Create a bounding box for our map
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+            regionRadius * 3.2, regionRadius * 3.2)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
 }

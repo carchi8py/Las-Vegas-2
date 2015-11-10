@@ -67,6 +67,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         let tabBar = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
         
         let tableVC = tabBar.viewControllers?[0] as! TableViewController
+        let mapVC = tabBar.viewControllers?[1] as! MapViewController
         
         let pinCount = pins.count
         var i = 0
@@ -80,6 +81,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         let pin = pins[index]
         
         tableVC.selectedPin = pin
+        mapVC.selectedPin = pin
         
         self.navigationController?.pushViewController(tabBar, animated: true)
     }
