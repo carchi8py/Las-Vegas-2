@@ -162,12 +162,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="jAN-EY-vgk">
+                                <rect key="frame" x="0.0" y="308" width="200" height="292"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="292" id="cxf-Sj-ywF"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="icf-GT-HFt">
+                                <rect key="frame" x="200" y="308" width="200" height="292"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="MgF-Rv-ofX">
+                                <rect key="frame" x="400" y="308" width="200" height="292"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KvP-bt-7Ab" firstAttribute="leading" secondItem="vND-1j-5Ae" secondAttribute="leadingMargin" constant="-20" id="0gF-Kt-M6l"/>
+                            <constraint firstItem="jAN-EY-vgk" firstAttribute="leading" secondItem="vND-1j-5Ae" secondAttribute="leadingMargin" constant="-20" id="2mn-2O-elq"/>
                             <constraint firstItem="KvP-bt-7Ab" firstAttribute="top" secondItem="8hn-Oz-41l" secondAttribute="bottom" constant="8" id="466-fJ-bhe"/>
+                            <constraint firstItem="jAN-EY-vgk" firstAttribute="height" secondItem="icf-GT-HFt" secondAttribute="height" id="79V-tU-vla"/>
+                            <constraint firstItem="MgF-Rv-ofX" firstAttribute="leading" secondItem="icf-GT-HFt" secondAttribute="trailing" id="7CI-hq-3Re"/>
+                            <constraint firstItem="icf-GT-HFt" firstAttribute="width" secondItem="MgF-Rv-ofX" secondAttribute="width" id="9VD-FI-1Bx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MgF-Rv-ofX" secondAttribute="trailing" constant="-20" id="F3r-n6-dO9"/>
+                            <constraint firstItem="icf-GT-HFt" firstAttribute="leading" secondItem="jAN-EY-vgk" secondAttribute="trailing" id="Iiw-oT-Fd3"/>
+                            <constraint firstItem="IKZ-4p-nDU" firstAttribute="top" secondItem="jAN-EY-vgk" secondAttribute="bottom" id="PjB-pX-LUe"/>
+                            <constraint firstItem="icf-GT-HFt" firstAttribute="height" secondItem="MgF-Rv-ofX" secondAttribute="height" id="QS6-4n-NM7"/>
+                            <constraint firstItem="jAN-EY-vgk" firstAttribute="width" secondItem="icf-GT-HFt" secondAttribute="width" id="SbT-VA-rtX"/>
+                            <constraint firstItem="IKZ-4p-nDU" firstAttribute="top" secondItem="icf-GT-HFt" secondAttribute="bottom" id="Tt4-bx-h2R"/>
+                            <constraint firstItem="IKZ-4p-nDU" firstAttribute="top" secondItem="MgF-Rv-ofX" secondAttribute="bottom" id="naK-r2-5At"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KvP-bt-7Ab" secondAttribute="trailing" constant="-20" id="sv7-90-eXX"/>
                         </constraints>
                     </view>
@@ -202,5 +228,6 @@
     <resources>
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
+        <image name="placeholder" width="250" height="250"/>
     </resources>
 </document>
