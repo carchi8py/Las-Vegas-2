@@ -25,10 +25,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //Make the view delgate the map
         self.mapView.delegate = self
         
-        //Set Inital Location to Las Vegas. This won't be the file location though
-        let initialLocation = CLLocation(latitude: 36.1096745, longitude: -115.1735591)
-        centerMapOnLocation(initialLocation, radius: 3.2)
-        
         locations = fetchAllLocations()
         
         //Add Locations to Map
