@@ -162,18 +162,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="jAN-EY-vgk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="jAN-EY-vgk">
                                 <rect key="frame" x="0.0" y="308" width="200" height="292"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="292" id="cxf-Sj-ywF"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="icf-GT-HFt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="icf-GT-HFt">
                                 <rect key="frame" x="200" y="308" width="200" height="292"/>
                                 <animations/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="MgF-Rv-ofX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="MgF-Rv-ofX">
                                 <rect key="frame" x="400" y="308" width="200" height="292"/>
                                 <animations/>
                             </imageView>
@@ -198,6 +198,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageOne" destination="jAN-EY-vgk" id="anI-DS-X9g"/>
+                        <outlet property="imageThree" destination="MgF-Rv-ofX" id="C88-P8-xHN"/>
+                        <outlet property="imageTwo" destination="icf-GT-HFt" id="hjx-vy-oAI"/>
                         <outlet property="titleLabel" destination="KvP-bt-7Ab" id="Jfk-cA-LvT"/>
                     </connections>
                 </viewController>

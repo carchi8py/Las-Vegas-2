@@ -55,6 +55,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return results as! [Location]
     }
     
+    // Grab all Foursquare Photos that match the pin
+    func fetchAllPhotos(venue: Location) -> [Photo] {
+        let error: NSErrorPointer = nil
+        let fetchRequest = NSFetchRequest(entityName: "Photo")
+        fetchRequest.predicate = NSPredicate(format: "location == %@", venue)
+        
+        let results: [AnyObject]?
+        do {
+            results = try sharedContext.executeFetchRequest(fetchRequest)
+        } catch let tryError as NSError {
+            error.memory = tryError
+            results = nil
+        }
+        
+        if error != nil {
+            print("Unable to get saved data \(error.debugDescription)")
+        }
+        
+        return results as![Photo]
+    }
+    
     lazy var sharedContext = {
         CoreDataStackManager.sharedInstance().managedObjectContext
     }()
@@ -71,10 +92,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 index = i
             }
         }
+        let photos = fetchAllPhotos(locations[index])
+        var photoOne = UIImage(named: "placeholder")
+        var photoTwo = UIImage(named: "placeholder")
+        var photoThree = UIImage(named: "placeholder")
+        print("\(photos.count)")
+        if photos.count > 0 {
+            photoOne = photos[0].image
+        }
+        if photos.count > 1 {
+            photoTwo = photos[1].image
+        }
+        if photos.count > 2 {
+            photoThree = photos[2].image
+        }
         
         let name = locations[index].name
         
         viewController.name = name
+        viewController.photoOne = photoOne
+        viewController.photoTwo = photoTwo
+        viewController.photoThree = photoThree
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
