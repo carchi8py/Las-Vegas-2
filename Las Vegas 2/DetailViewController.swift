@@ -13,8 +13,10 @@ class DetailViewController: UIViewController {
     
     var name: String!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
-        print(name)
+        titleLabel.text = name
     }
     
 }

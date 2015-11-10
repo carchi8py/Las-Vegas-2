@@ -154,9 +154,26 @@
                     <view key="view" contentMode="scaleToFill" id="vND-1j-5Ae">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-bt-7Ab">
+                                <rect key="frame" x="0.0" y="28" width="600" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KvP-bt-7Ab" firstAttribute="leading" secondItem="vND-1j-5Ae" secondAttribute="leadingMargin" constant="-20" id="0gF-Kt-M6l"/>
+                            <constraint firstItem="KvP-bt-7Ab" firstAttribute="top" secondItem="8hn-Oz-41l" secondAttribute="bottom" constant="8" id="466-fJ-bhe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KvP-bt-7Ab" secondAttribute="trailing" constant="-20" id="sv7-90-eXX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="KvP-bt-7Ab" id="Jfk-cA-LvT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1w5-iL-6Df" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
