@@ -146,6 +146,7 @@ class FoursquareClient: NSObject {
                         if let photos = response.valueForKey(FoursquareClient.returnKeys.photos) as? NSDictionary {
                             if let items = photos.valueForKey(FoursquareClient.returnKeys.items) as? NSArray {
                                 var done = false
+                                var count = 0
                                 for item in items {
                                     //We only want to download the first images (not sure how to tell fourquare to return just one image
                                     if done {
@@ -166,7 +167,10 @@ class FoursquareClient: NSObject {
                                             })
                                         })
                                     }
-                                    done = true
+                                    count += 1
+                                    if count == 3 {
+                                        done = true
+                                    }
                                 }
                                 completionHnadler(success: true, error: nil)
                             } else {
