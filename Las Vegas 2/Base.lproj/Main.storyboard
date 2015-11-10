@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="223" y="624"/>
         </scene>
-        <!--Table-->
+        <!--List-->
         <scene sceneID="FH6-Vu-fYY">
             <objects>
                 <tableViewController id="zUh-0a-Y8f" customClass="TableViewController" customModule="Las_Vegas_2" customModuleProvider="target" sceneMemberID="viewController">
@@ -102,7 +102,7 @@
                             <outlet property="delegate" destination="zUh-0a-Y8f" id="LlD-gn-c0c"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Table" id="BP0-zm-QQ4"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list" id="BP0-zm-QQ4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKy-cj-pqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,4 +186,7 @@
             <point key="canvasLocation" x="962" y="624"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list" width="32" height="32"/>
+    </resources>
 </document>
