@@ -25,9 +25,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //Make the view delgate the map
         self.mapView.delegate = self
         
-        //Set Inital Location to Las Vegas
+        //Set Inital Location to Las Vegas. This won't be the file location though
         let initialLocation = CLLocation(latitude: 36.1096745, longitude: -115.1735591)
-        centerMapOnLocation(initialLocation)
+        centerMapOnLocation(initialLocation, radius: 3.2)
         
         locations = fetchAllLocations()
         
@@ -65,21 +65,31 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     /***** Location Functions *****/
     func addAllLocationsToMap() {
+        var averageLatitude = 0.0
+        var averageLongitude = 0.0
+        var totalLocations = 0.0
         for location in locations {
             var newPin = MKPointAnnotation()
             newPin.coordinate.latitude = location.latitude
+            averageLatitude += location.latitude
             newPin.coordinate.longitude = location.longitude
+            averageLongitude += location.longitude
+            totalLocations += 1
+            
             mapView.addAnnotation(newPin)
         }
+        let averageLocation = CLLocation(latitude: averageLatitude/totalLocations, longitude: averageLongitude/totalLocations)
+        centerMapOnLocation(averageLocation, radius: 0.75)
+        
     }
     
     /***** Helper Functions *****/
     
     let regionRadius: CLLocationDistance = 1000
     //Create a bounding box for our map
-    func centerMapOnLocation(location: CLLocation) {
+    func centerMapOnLocation(location: CLLocation, radius: Double) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-            regionRadius * 3.2, regionRadius * 3.2)
+            regionRadius * radius, regionRadius * radius)
         mapView.setRegion(coordinateRegion, animated: true)
     }
 }
