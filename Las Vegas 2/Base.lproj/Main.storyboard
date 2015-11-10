@@ -108,10 +108,10 @@
             </objects>
             <point key="canvasLocation" x="1784" y="-115"/>
         </scene>
-        <!--Item 2-->
+        <!--Map-->
         <scene sceneID="Vfb-1u-6Hq">
             <objects>
-                <viewController id="Xx5-3F-fOL" sceneMemberID="viewController">
+                <viewController id="Xx5-3F-fOL" customClass="MapViewController" customModule="Las_Vegas_2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8nC-kn-ZmO"/>
                         <viewControllerLayoutGuide type="bottom" id="USE-OX-jZG"/>
@@ -119,10 +119,25 @@
                     <view key="view" contentMode="scaleToFill" id="Nfv-7F-DPe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jwN-6Z-meL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <animations/>
+                            </mapView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="USE-OX-jZG" firstAttribute="top" secondItem="jwN-6Z-meL" secondAttribute="bottom" id="HTr-SM-b7s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jwN-6Z-meL" secondAttribute="trailing" constant="-20" id="YAT-Km-pR9"/>
+                            <constraint firstItem="jwN-6Z-meL" firstAttribute="top" secondItem="8nC-kn-ZmO" secondAttribute="bottom" id="bfZ-UT-C4N"/>
+                            <constraint firstItem="jwN-6Z-meL" firstAttribute="leading" secondItem="Nfv-7F-DPe" secondAttribute="leadingMargin" constant="-20" id="eXY-jZ-wrn"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="weU-SG-dRu"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="weU-SG-dRu"/>
+                    <connections>
+                        <outlet property="mapView" destination="jwN-6Z-meL" id="9r6-hU-slU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6O-hh-CPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,6 +194,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="zUh-0a-Y8f" kind="relationship" relationship="viewControllers" id="e8y-vr-tMa"/>
+                        <segue destination="Xx5-3F-fOL" kind="relationship" relationship="viewControllers" id="fzC-r4-Rql"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jkL-zE-cNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,5 +204,6 @@
     </scenes>
     <resources>
         <image name="list" width="32" height="32"/>
+        <image name="map" width="32" height="32"/>
     </resources>
 </document>

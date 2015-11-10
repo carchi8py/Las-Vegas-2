@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2741BA3D1BF17B3C00012C04 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2741BA3C1BF17B3C00012C04 /* MapViewController.swift */; };
 		2747EB541BD8B53300B6CE43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB531BD8B53300B6CE43 /* AppDelegate.swift */; };
 		2747EB561BD8B53300B6CE43 /* VegasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB551BD8B53300B6CE43 /* VegasViewController.swift */; };
 		2747EB591BD8B53300B6CE43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2747EB571BD8B53300B6CE43 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2741BA3C1BF17B3C00012C04 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2747EB501BD8B53300B6CE43 /* Las Vegas 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Las Vegas 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747EB531BD8B53300B6CE43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2747EB551BD8B53300B6CE43 /* VegasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegasViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				2747EB551BD8B53300B6CE43 /* VegasViewController.swift */,
 				2747EB8D1BDF088F00B6CE43 /* TableViewController.swift */,
+				2741BA3C1BF17B3C00012C04 /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2741BA3D1BF17B3C00012C04 /* MapViewController.swift in Sources */,
 				27FD7B0C1BE9964D00DF82B4 /* FoursquareConstants.swift in Sources */,
 				2747EB851BD951F100B6CE43 /* Pin.swift in Sources */,
 				2747EB8E1BDF088F00B6CE43 /* TableViewController.swift in Sources */,
