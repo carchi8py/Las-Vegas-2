@@ -99,7 +99,6 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\(fetchAllLocations().count)")
         return fetchAllLocations().count
     }
     
