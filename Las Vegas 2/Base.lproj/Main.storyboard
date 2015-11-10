@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-482" y="624"/>
         </scene>
-        <!--Las Vegas-->
+        <!--Find Things nearby in Las Vegas-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="VegasViewController" customModule="Las_Vegas_2" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="06L-f3-ylo" secondAttribute="bottom" id="XmF-ws-f7Z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Las Vegas" id="6Lv-NN-Mx5"/>
+                    <navigationItem key="navigationItem" title="Find Things nearby in Las Vegas" id="6Lv-NN-Mx5"/>
                     <connections>
                         <outlet property="mapView" destination="06L-f3-ylo" id="Tbl-oo-XRA"/>
                         <segue destination="zaK-P9-G8t" kind="show" id="eNI-M1-gJV"/>
@@ -160,27 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1w5-iL-6Df" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2582" y="624"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="tik-bn-kvl">
-            <objects>
-                <viewController id="JZQ-Qx-p5c" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xGx-S9-YjK"/>
-                        <viewControllerLayoutGuide type="bottom" id="URP-X3-Bww"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AYE-Ch-pv3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Lip-3f-Xoo"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jUc-SW-psg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1790" y="1458"/>
+            <point key="canvasLocation" x="2489" y="265"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="166-bG-rXe">
