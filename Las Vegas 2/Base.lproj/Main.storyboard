@@ -146,7 +146,7 @@
         <!--Detail View Controller-->
         <scene sceneID="fw1-jr-g0E">
             <objects>
-                <viewController id="NDm-ww-tDW" customClass="DetailViewController" customModule="Las_Vegas_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NDm-ww-tDW" customClass="DetailViewController" customModule="Las_Vegas_2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8hn-Oz-41l"/>
                         <viewControllerLayoutGuide type="bottom" id="IKZ-4p-nDU"/>

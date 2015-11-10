@@ -102,4 +102,15 @@ class TableViewController: UITableViewController {
         return fetchAllLocations().count
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let venue = fetchAllLocations()[indexPath.row]
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        
+        let name = venue.name
+        
+        viewController.name = name
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+    }
+    
 }
