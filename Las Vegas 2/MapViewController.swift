@@ -59,6 +59,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         CoreDataStackManager.sharedInstance().managedObjectContext
     }()
     
+    /***** Map View Methods *****/
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        
+        let locationCount = locations.count
+        var i = 0
+        var index: Int = 0
+        for i = 0; i < locationCount; i++ {
+            if view.annotation?.coordinate.latitude == locations[i].latitude && view.annotation?.coordinate.longitude == locations[i].longitude {
+                index = i
+            }
+        }
+        
+        let name = locations[index].name
+        
+        viewController.name = name
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     /***** Location Functions *****/
     func addAllLocationsToMap() {
         var averageLatitude = 0.0
