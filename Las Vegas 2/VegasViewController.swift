@@ -44,11 +44,8 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         longPress.minimumPressDuration = 0.4
         mapView.addGestureRecognizer(longPress)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    /***** Core Data functions *****/
     
     lazy var sharedContext = {
         CoreDataStackManager.sharedInstance().managedObjectContext
@@ -63,12 +60,15 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         return newPin
     }
     
+    //Send the selected pin to the table and map views
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         let tabBar = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
         
+        //Grab are 2 Controllers in the Tab Bar so that we can send the pin to them
         let tableVC = tabBar.viewControllers?[0] as! TableViewController
         let mapVC = tabBar.viewControllers?[1] as! MapViewController
         
+        // Find the pin that was selected
         let pinCount = pins.count
         var i = 0
         var index: Int = 0
@@ -80,6 +80,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         
         let pin = pins[index]
         
+        //Send the pin to the Map and Table views
         tableVC.selectedPin = pin
         mapVC.selectedPin = pin
         
@@ -128,8 +129,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
             if success {
                 
             } else {
-                //TODO: Add some real Error Handling here.
-                print("Something bad happened")
+                self.showAlert("Error", message: "Unable to connect to FourSquare")
             }
         })
     }
@@ -153,8 +153,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         do {
             results = try sharedContext.executeFetchRequest(fetchRequest)
         } catch {
-            //TODO: Added a real error handling here.
-            print("Something bad happened")
+            self.showAlert("Error", message: "Unable to get Saved Pins")
             results = nil
         }
         return results as! [Pin]
@@ -168,5 +167,14 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
             regionRadius * 3.2, regionRadius * 3.2)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }
