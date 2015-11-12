@@ -12,6 +12,7 @@ The first is a table view. The table view show the name of the location, how man
 <img src="https://github.com/carchi8py/Las-Vegas-2/blob/master/img/image2.jpg?raw=true" width="50%"></img>
 
 The second view is a map view. The map view show the same place from the table view, but plot them on the map using the Latitude and longitude that Foursqaure provided. Clicking on a location will bring up the detailed view.
+
 <img src="https://raw.githubusercontent.com/carchi8py/Las-Vegas-2/master/img/image3.jpg" width="50%"></img>
 
 
