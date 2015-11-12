@@ -105,10 +105,12 @@ class TableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let venue = fetchAllLocations()[indexPath.row]
         let photos = fetchAllPhotos(venue)
+        
         var photoOne = UIImage(named: "placeholder")
         var photoTwo = UIImage(named: "placeholder")
         var photoThree = UIImage(named: "placeholder")
-        print("\(photos.count)")
+        
+        //Set Photos if we have them, if not we will show the placeholder image
         if photos.count > 0 {
             photoOne = photos[0].image
         }
@@ -121,11 +123,19 @@ class TableViewController: UITableViewController {
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         
         let name = venue.name
+        let url = venue.url
+        let hereNow = venue.hereNow
+        let totalCheckins = venue.totalCheckins
+        let foursquareID = venue.foursquareID
         
         viewController.name = name
         viewController.photoOne = photoOne
         viewController.photoTwo = photoTwo
         viewController.photoThree = photoThree
+        viewController.url = url
+        viewController.hereNow = hereNow
+        viewController.totalCheckins = totalCheckins
+        
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }
