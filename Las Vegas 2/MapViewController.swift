@@ -108,11 +108,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         let name = locations[index].name
+        let url = locations[index].url
+        let hereNow = locations[index].hereNow
+        let totalCheckins = locations[index].totalCheckins
+        let foursquareID = locations[index].foursquareID
         
         viewController.name = name
         viewController.photoOne = photoOne
         viewController.photoTwo = photoTwo
         viewController.photoThree = photoThree
+        viewController.url = url
+        viewController.hereNow = hereNow
+        viewController.totalCheckins = totalCheckins
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
