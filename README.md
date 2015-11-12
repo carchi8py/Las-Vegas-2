@@ -1,1 +1,15 @@
-#How to run this Project
+# Las Vegas 2
+
+
+## How to Run / Use this project the Project
+1. Download or clone the project from git hub
+2. Start the project from Xcode.
+3. Push and hold for 1/2 a second or more on a location your interested in
+4. Select that pin to open the location. There are 2 view for the information
+
+The first is a table view. The table view show the name of the location, how many people are currently checked in here on Foursquare, and the total number of people who have ever checked in here. The table view also shows a picture. So that the user dosn't have to wait for all picture to be downloaded the table loads with what picture are currently aviable and popular the rest when the tables is refreashed (cell go off the screen). If there are no pictures for a location a placeholder image is loaded. Click on a location will bring up the detailsed view
+
+The second view is a map view. The map view show the same place from the table view, but plot them on the map using the Latitude and longitude that Foursqaure provided. Clicking on a location will bring up the detailed view.
+
+
+The detailed view bring up details about the locations. Total people who have checked in, The current number of people who are here, a URL if one is given. And 3 images from the location.
