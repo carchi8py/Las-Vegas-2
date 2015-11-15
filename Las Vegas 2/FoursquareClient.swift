@@ -35,7 +35,6 @@ class FoursquareClient: NSObject {
         let task = taskWithParameters(FoursquareClient.Methods.search, paramters: parameters) {
             JSONResults, error in
             if let error = error {
-                print("Something bad happend")
                 completionHandler(success: false, array: nil, error: error)
                 //Foursquare return what we need in a dictionary -> Dictionary -> Array
                 // The array contain the location we want
@@ -137,7 +136,6 @@ class FoursquareClient: NSObject {
             results, error in
             
             if let error = error{
-                print("Something bad happened")
                 completionHnadler(success: false, error: error)
             } else {
                 do {
@@ -195,7 +193,6 @@ class FoursquareClient: NSObject {
             data, resonse, error in
             
             if let error = error {
-                print("Something bad happend")
                 completionHandler(success: false, error: error)
             } else {
                 if let photoToSave = data {
