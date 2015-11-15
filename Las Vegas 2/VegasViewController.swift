@@ -24,6 +24,11 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //Check if we have network connection
+        if !Reachability.isConnectedToNetwork() {
+            self.showAlert("No Network Connection", message: "Unable to connect to Internet")
+        }
+        
         //Make the view delgate the map
         self.mapView.delegate = self
         

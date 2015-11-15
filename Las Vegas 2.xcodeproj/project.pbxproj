@@ -21,6 +21,7 @@
 		2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */; };
 		2747EB8C1BD957CF00B6CE43 /* Vegas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB8A1BD957CF00B6CE43 /* Vegas.xcdatamodeld */; };
 		2747EB8E1BDF088F00B6CE43 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747EB8D1BDF088F00B6CE43 /* TableViewController.swift */; };
+		27B20BFE1BF817C500C3E760 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B20BFD1BF817C500C3E760 /* Reachability.swift */; };
 		27FD7B0A1BE9963C00DF82B4 /* FoursquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD7B091BE9963C00DF82B4 /* FoursquareClient.swift */; };
 		27FD7B0C1BE9964D00DF82B4 /* FoursquareConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD7B0B1BE9964D00DF82B4 /* FoursquareConstants.swift */; };
 		27FD7B0E1BEFD52C00DF82B4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD7B0D1BEFD52C00DF82B4 /* Photo.swift */; };
@@ -64,6 +65,7 @@
 		2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		2747EB8B1BD957CF00B6CE43 /* Vegas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vegas.xcdatamodel; sourceTree = "<group>"; };
 		2747EB8D1BDF088F00B6CE43 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		27B20BFD1BF817C500C3E760 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		27FD7B091BE9963C00DF82B4 /* FoursquareClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareClient.swift; sourceTree = "<group>"; };
 		27FD7B0B1BE9964D00DF82B4 /* FoursquareConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareConstants.swift; sourceTree = "<group>"; };
 		27FD7B0D1BEFD52C00DF82B4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				2747EB881BD9547E00B6CE43 /* CoreDataStackManager.swift */,
+				27B20BFD1BF817C500C3E760 /* Reachability.swift */,
 				2747EB831BD951E200B6CE43 /* Model */,
 				2747EB811BD8B61A00B6CE43 /* Controller */,
 				2747EB821BD8B64E00B6CE43 /* Supporting Files */,
@@ -329,6 +332,7 @@
 				27FD7B0A1BE9963C00DF82B4 /* FoursquareClient.swift in Sources */,
 				2747EB891BD9547E00B6CE43 /* CoreDataStackManager.swift in Sources */,
 				2747EB541BD8B53300B6CE43 /* AppDelegate.swift in Sources */,
+				27B20BFE1BF817C500C3E760 /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
