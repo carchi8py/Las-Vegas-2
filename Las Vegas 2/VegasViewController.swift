@@ -14,6 +14,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
 
     //The Map View Object
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var waitingOnData: UIActivityIndicatorView!
     
     //Default to Restore map location when app is reopened
     let defaults = NSUserDefaults()
@@ -22,6 +23,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        waitingOnData.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
         
         //Check if we have network connection
@@ -129,11 +131,13 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
     /***** Download functions *****/
     func downloadFromFourSquare(pin: Pin){
         let ll = "\(pin.latitude),\(pin.longitude)"
+        startWaiting()
         FoursquareClient.sharedInstance().searchFourSquare(ll, pin: pin, completionHandler: {
             success, data, error in
             if success {
-                
+                self.stopWaiting()
             } else {
+                self.stopWaiting()
                 self.showAlert("Error", message: "Unable to connect to FourSquare")
             }
         })
@@ -162,6 +166,17 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
             results = nil
         }
         return results as! [Pin]
+    }
+    
+    /***** Waiting On data function *****/
+    func startWaiting() {
+        self.waitingOnData.hidden = false
+        self.waitingOnData.startAnimating()
+    }
+    
+    func stopWaiting() {
+        self.waitingOnData.stopAnimating()
+        self.waitingOnData.hidden = true
     }
     
     /***** Helper Functions *****/
