@@ -137,6 +137,13 @@
                                 <animations/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fc2-dl-dgP">
+                                <rect key="frame" x="170" y="75" width="410" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.059866298714069122" blue="0.11302546012550152" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -145,14 +152,18 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hAk-rt-UVh" secondAttribute="trailing" constant="-20" id="4Tq-No-e7N"/>
                             <constraint firstItem="USE-OX-jZG" firstAttribute="top" secondItem="jwN-6Z-meL" secondAttribute="bottom" id="HTr-SM-b7s"/>
                             <constraint firstItem="jwN-6Z-meL" firstAttribute="top" secondItem="hAk-rt-UVh" secondAttribute="bottom" id="MAg-0K-0Xq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fc2-dl-dgP" secondAttribute="trailing" id="Xkc-bD-ApE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jwN-6Z-meL" secondAttribute="trailing" constant="-20" id="YAT-Km-pR9"/>
+                            <constraint firstItem="Fc2-dl-dgP" firstAttribute="top" secondItem="8nC-kn-ZmO" secondAttribute="bottom" constant="11" id="ZV2-4k-0E8"/>
                             <constraint firstItem="jwN-6Z-meL" firstAttribute="leading" secondItem="Nfv-7F-DPe" secondAttribute="leadingMargin" constant="-20" id="eXY-jZ-wrn"/>
+                            <constraint firstItem="Fc2-dl-dgP" firstAttribute="leading" secondItem="Nfv-7F-DPe" secondAttribute="leadingMargin" constant="150" id="eb3-oY-EC4"/>
                             <constraint firstItem="hAk-rt-UVh" firstAttribute="leading" secondItem="Nfv-7F-DPe" secondAttribute="leadingMargin" constant="-20" id="rbx-NW-I6A"/>
                             <constraint firstItem="jwN-6Z-meL" firstAttribute="leading" secondItem="hAk-rt-UVh" secondAttribute="trailing" constant="-600" id="vJY-ic-aP2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="weU-SG-dRu"/>
                     <connections>
+                        <outlet property="errorLabel" destination="Fc2-dl-dgP" id="fn4-Wr-f0p"/>
                         <outlet property="mapView" destination="jwN-6Z-meL" id="9r6-hU-slU"/>
                         <outlet property="searchBar" destination="hAk-rt-UVh" id="5o6-Q7-2yC"/>
                     </connections>

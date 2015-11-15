@@ -19,9 +19,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        errorLabel.hidden = true
         
         //Make the view delgate the map
         self.mapView.delegate = self
@@ -41,13 +44,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     /***** SearchBar Functions *****/
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         // As the user types location we want to filter the locations
+        errorLabel.hidden = true
         removeAllAnotations()
         locations = fetchFilterLocations(searchText)
         addFilterLocationsToMap(locations)
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        errorLabel.hidden = true
         searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        errorLabel.hidden = true
     }
     
     /***** Core Data Functions *****/
@@ -76,14 +85,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     
     //Grab filter locations
     func fetchFilterLocations(searchString: String) -> [Location] {
+        print(searchString)
         var allLocations = fetchAllLocations()
         var filterLocations = [Location]()
-        var i = 0
         for location in allLocations {
             if location.name.lowercaseString.rangeOfString(searchString.lowercaseString) != nil {
                 filterLocations.append(location)
             }
-            i += 1
+        }
+        if filterLocations.count == 0 {
+            if searchString.characters.count == 0 {
+                errorLabel.hidden = true
+            } else {
+                errorLabel.text = "No Locations contains " + searchString
+                errorLabel.hidden = false
+            }
+            return allLocations
         }
         return filterLocations
     }
