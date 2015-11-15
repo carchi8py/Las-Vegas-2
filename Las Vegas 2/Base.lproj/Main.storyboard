@@ -215,9 +215,20 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKY-TI-yk6">
                                 <rect key="frame" x="20" y="115" width="560" height="75"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="jx4-Em-15j"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="urlTouched:" destination="NDm-ww-tDW" eventType="touchUpInside" id="In9-Kh-ieg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbu-ex-H4a">
+                                <rect key="frame" x="20" y="160" width="560" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="FoursquareTouched:" destination="NDm-ww-tDW" eventType="touchUpInside" id="nEF-2P-c8D"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -226,6 +237,7 @@
                         <constraints>
                             <constraint firstItem="KvP-bt-7Ab" firstAttribute="leading" secondItem="vND-1j-5Ae" secondAttribute="leadingMargin" constant="-20" id="0gF-Kt-M6l"/>
                             <constraint firstItem="jAN-EY-vgk" firstAttribute="leading" secondItem="vND-1j-5Ae" secondAttribute="leadingMargin" constant="-20" id="2mn-2O-elq"/>
+                            <constraint firstItem="Mbu-ex-H4a" firstAttribute="top" secondItem="WKY-TI-yk6" secondAttribute="bottom" constant="-30" id="3Tq-p6-4qb"/>
                             <constraint firstItem="KvP-bt-7Ab" firstAttribute="top" secondItem="8hn-Oz-41l" secondAttribute="bottom" constant="8" id="466-fJ-bhe"/>
                             <constraint firstItem="9Es-2Q-mda" firstAttribute="leading" secondItem="DE2-QQ-Vq9" secondAttribute="trailing" constant="43" id="5ff-tj-zjx"/>
                             <constraint firstItem="jAN-EY-vgk" firstAttribute="height" secondItem="icf-GT-HFt" secondAttribute="height" id="79V-tU-vla"/>
@@ -239,12 +251,14 @@
                             <constraint firstItem="jAN-EY-vgk" firstAttribute="width" secondItem="icf-GT-HFt" secondAttribute="width" id="SbT-VA-rtX"/>
                             <constraint firstItem="IKZ-4p-nDU" firstAttribute="top" secondItem="icf-GT-HFt" secondAttribute="bottom" id="Tt4-bx-h2R"/>
                             <constraint firstAttribute="leadingMargin" secondItem="DE2-QQ-Vq9" secondAttribute="leading" id="U6r-1H-W8X"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mbu-ex-H4a" secondAttribute="trailing" id="W2L-9V-G96"/>
                             <constraint firstItem="WKY-TI-yk6" firstAttribute="top" secondItem="DE2-QQ-Vq9" secondAttribute="bottom" constant="8" id="aSa-or-8HE"/>
                             <constraint firstAttribute="leadingMargin" secondItem="icb-mM-U0h" secondAttribute="leading" id="b3K-2M-hm4"/>
                             <constraint firstItem="9Es-2Q-mda" firstAttribute="top" secondItem="sLa-5g-fzg" secondAttribute="bottom" constant="8" id="eUj-fM-PK0"/>
                             <constraint firstAttribute="leadingMargin" secondItem="WKY-TI-yk6" secondAttribute="leading" id="laf-ix-Owb"/>
                             <constraint firstItem="DE2-QQ-Vq9" firstAttribute="top" secondItem="icb-mM-U0h" secondAttribute="bottom" constant="8" id="nIz-lQ-AY7"/>
                             <constraint firstItem="IKZ-4p-nDU" firstAttribute="top" secondItem="MgF-Rv-ofX" secondAttribute="bottom" id="naK-r2-5At"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Mbu-ex-H4a" secondAttribute="leading" id="pK4-98-W5K"/>
                             <constraint firstItem="icb-mM-U0h" firstAttribute="top" secondItem="KvP-bt-7Ab" secondAttribute="bottom" constant="8" id="pWt-wZ-xQq"/>
                             <constraint firstItem="sLa-5g-fzg" firstAttribute="top" secondItem="KvP-bt-7Ab" secondAttribute="bottom" constant="7" id="q3O-N1-iO2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KvP-bt-7Ab" secondAttribute="trailing" constant="-20" id="sv7-90-eXX"/>
@@ -253,6 +267,7 @@
                     </view>
                     <connections>
                         <outlet property="UrlButton" destination="WKY-TI-yk6" id="qHI-GW-OWU"/>
+                        <outlet property="fourSquareButton" destination="Mbu-ex-H4a" id="m62-dA-Lm2"/>
                         <outlet property="hereNowLabel" destination="9Es-2Q-mda" id="uYf-nh-L5W"/>
                         <outlet property="imageOne" destination="jAN-EY-vgk" id="anI-DS-X9g"/>
                         <outlet property="imageThree" destination="MgF-Rv-ofX" id="C88-P8-xHN"/>

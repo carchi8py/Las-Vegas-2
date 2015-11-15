@@ -120,6 +120,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         viewController.url = url
         viewController.hereNow = hereNow
         viewController.totalCheckins = totalCheckins
+        viewController.foursquareID = foursquareID
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

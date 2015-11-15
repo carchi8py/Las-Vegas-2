@@ -19,11 +19,12 @@ class DetailViewController: UIViewController {
     var hereNow: Int!
     var url: String!
     var foursquareID: String!
+    var foursqaureURL: String!
     
     @IBOutlet weak var totalCheckinLabel: UILabel!
     @IBOutlet weak var hereNowLabel: UILabel!
-    //@IBOutlet weak var foursquareUrlLabel: UILabel!
     @IBOutlet weak var UrlButton: UIButton!
+    @IBOutlet weak var fourSquareButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageOne: UIImageView!
     @IBOutlet weak var imageTwo: UIImageView!
@@ -37,10 +38,15 @@ class DetailViewController: UIViewController {
         totalCheckinLabel.text = "\(totalCheckins)"
         hereNowLabel.text = "\(hereNow)"
         UrlButton.setTitle(url, forState: .Normal)
-        //foursquareUrlLabel.text = foursquareID
+        fourSquareButton.setTitle("Foursquare", forState: .Normal)
+        foursqaureURL = "https://foursquare.com/v/" + foursquareID
         
     }
     
+    @IBAction func FoursquareTouched(sender: AnyObject) {
+        let app = UIApplication.sharedApplication()
+        app.openURL(NSURL(string: foursqaureURL)!)
+    }
     @IBAction func urlTouched(sender: AnyObject) {
         let app = UIApplication.sharedApplication()
         app.openURL(NSURL(string: url)!)
