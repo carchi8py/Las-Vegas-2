@@ -13,14 +13,18 @@ The first is a table view. The table view show the name of the location, how man
 <img src="https://github.com/carchi8py/Las-Vegas-2/blob/master/img/image2.jpg?raw=true" width="50%"></img>
 
 ###Table View (for thouse in a rush)
-If the user clicked on a pin while the activity indicator still up they will still be taken to the table 
-So that the user dosn't have to wait for all picture to be downloaded the table loads with what picture are currently aviable and popular the rest when the tables is refreashed (cell go off the screen). If there are no pictures for a location a placeholder image is loaded. Click on a location will bring up the detailed view <br>
+If the user click on the pin while the activity indicator is still up, they will still be able to view the data, but images that haven't loaded will not appear. For Instance Hollywood Theatre's images haven't been downloaded yet. As the user scroll through the table the hidden cell will check to see if they have a image, and show it when the cell reapears on the screen. This was done so if the user has very bad internet connectiont hey still can get all the information with out having to wait for the images to download <br>
 <img src="https://raw.githubusercontent.com/carchi8py/Las-Vegas-2/master/img/image5.jpg" width="50%"></img>
 
-The second view is a map view. The map view show the same place from the table view, but plot them on the map using the Latitude and longitude that Foursqaure provided. Clicking on a location will bring up the detailed view.
+###Map View
+The second view is a map view. The map view show the same place from the table view, but plot them on the map using the Latitude and longitude that Foursqaure provided. Clicking on a location will bring up the detailed view.<br>
 
-<img src="https://raw.githubusercontent.com/carchi8py/Las-Vegas-2/master/img/image3.jpg" width="50%"></img>
+<img src="https://raw.githubusercontent.com/carchi8py/Las-Vegas-2/master/img/image6.jpg" width="50%"></img>
+
+When you use the search the map will filter out results that don't match the string that your typing. If no results match, an error message will appear and all location will reapear on the map <br>
+<img src="https://raw.githubusercontent.com/carchi8py/Las-Vegas-2/master/img/image7.jpg" width="50%"></img>
 
 
-The detailed view bring up details about the locations. Total people who have checked in, The current number of people who are here, a URL if one is given. And 3 images from the location.
+
+The detailed view bring up details about the locations. Total people who have checked in, The current number of people who are here, a URL if one is given, and a link to foursquare for more information. And 3 images from the location.<br>
 <img src="https://github.com/carchi8py/Las-Vegas-2/blob/master/img/image4.jpg?raw=true" width="50%"></img>
