@@ -129,22 +129,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jwN-6Z-meL">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <animations/>
                             </mapView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hAk-rt-UVh">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <animations/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hAk-rt-UVh" firstAttribute="top" secondItem="8nC-kn-ZmO" secondAttribute="bottom" id="2wC-Bm-ofK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hAk-rt-UVh" secondAttribute="trailing" constant="-20" id="4Tq-No-e7N"/>
                             <constraint firstItem="USE-OX-jZG" firstAttribute="top" secondItem="jwN-6Z-meL" secondAttribute="bottom" id="HTr-SM-b7s"/>
+                            <constraint firstItem="jwN-6Z-meL" firstAttribute="top" secondItem="hAk-rt-UVh" secondAttribute="bottom" id="MAg-0K-0Xq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jwN-6Z-meL" secondAttribute="trailing" constant="-20" id="YAT-Km-pR9"/>
-                            <constraint firstItem="jwN-6Z-meL" firstAttribute="top" secondItem="8nC-kn-ZmO" secondAttribute="bottom" id="bfZ-UT-C4N"/>
                             <constraint firstItem="jwN-6Z-meL" firstAttribute="leading" secondItem="Nfv-7F-DPe" secondAttribute="leadingMargin" constant="-20" id="eXY-jZ-wrn"/>
+                            <constraint firstItem="hAk-rt-UVh" firstAttribute="leading" secondItem="Nfv-7F-DPe" secondAttribute="leadingMargin" constant="-20" id="rbx-NW-I6A"/>
+                            <constraint firstItem="jwN-6Z-meL" firstAttribute="leading" secondItem="hAk-rt-UVh" secondAttribute="trailing" constant="-600" id="vJY-ic-aP2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="weU-SG-dRu"/>
                     <connections>
                         <outlet property="mapView" destination="jwN-6Z-meL" id="9r6-hU-slU"/>
+                        <outlet property="searchBar" destination="hAk-rt-UVh" id="5o6-Q7-2yC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6O-hh-CPN" userLabel="First Responder" sceneMemberID="firstResponder"/>

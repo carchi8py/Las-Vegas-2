@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 import CoreData
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     //Pin from Vegas View Map
     var selectedPin: Pin!
@@ -18,6 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var locations = [Location]()
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,28 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //Make the view delgate the map
         self.mapView.delegate = self
         
+        self.searchBar.delegate = self
+        
         locations = fetchAllLocations()
         
         //Add Locations to Map
         addAllLocationsToMap()
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.searchBar.becomeFirstResponder()
+    }
+    
+    /***** SearchBar Functions *****/
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        // As the user types location we want to filter the locations
+        removeAllAnotations()
+        locations = fetchFilterLocations(searchText)
+        addFilterLocationsToMap(locations)
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     /***** Core Data Functions *****/
@@ -53,6 +72,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         return results as! [Location]
+    }
+    
+    //Grab filter locations
+    func fetchFilterLocations(searchString: String) -> [Location] {
+        var allLocations = fetchAllLocations()
+        var filterLocations = [Location]()
+        var i = 0
+        for location in allLocations {
+            if location.name.lowercaseString.rangeOfString(searchString.lowercaseString) != nil {
+                filterLocations.append(location)
+            }
+            i += 1
+        }
+        return filterLocations
     }
     
     // Grab all Foursquare Photos that match the pin
@@ -141,8 +174,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         let averageLocation = CLLocation(latitude: averageLatitude/totalLocations, longitude: averageLongitude/totalLocations)
         centerMapOnLocation(averageLocation, radius: 0.75)
-        
     }
+    
+    func addFilterLocationsToMap(locations: [Location]) {
+        var averageLatitude = 0.0
+        var averageLongitude = 0.0
+        var totalLocations = 0.0
+        for location in locations {
+            var newPin = MKPointAnnotation()
+            newPin.coordinate.latitude = location.latitude
+            averageLatitude += location.latitude
+            newPin.coordinate.longitude = location.longitude
+            averageLongitude += location.longitude
+            totalLocations += 1
+            
+            mapView.addAnnotation(newPin)
+        }
+        let averageLocation = CLLocation(latitude: averageLatitude/totalLocations, longitude: averageLongitude/totalLocations)
+        centerMapOnLocation(averageLocation, radius: 0.75)
+    }
+    
+    func removeAllAnotations() {
+        var anotations = mapView.annotations
+        for anotation in anotations {
+            mapView.removeAnnotation(anotation)
+        }
+    }
+    
     
     /***** Helper Functions *****/
     
