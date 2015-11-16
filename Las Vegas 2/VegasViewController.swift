@@ -132,11 +132,14 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
     func downloadFromFourSquare(pin: Pin){
         let ll = "\(pin.latitude),\(pin.longitude)"
         startWaiting()
+        let app = UIApplication.sharedApplication()
+        app.networkActivityIndicatorVisible = true
         FoursquareClient.sharedInstance().searchFourSquare(ll, pin: pin, completionHandler: {
             success, data, error in
             if success {
                 self.stopWaiting()
             } else {
+                //app.networkActivityIndicatorVisible = false
                 self.stopWaiting()
                 self.showAlert("Error", message: "Unable to connect to FourSquare")
             }
@@ -175,8 +178,10 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
     }
     
     func stopWaiting() {
+        let app = UIApplication.sharedApplication()
         self.waitingOnData.stopAnimating()
         self.waitingOnData.hidden = true
+        app.networkActivityIndicatorVisible = false
     }
     
     /***** Helper Functions *****/
