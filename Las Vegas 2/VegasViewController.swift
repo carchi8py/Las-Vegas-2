@@ -130,6 +130,10 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
     
     /***** Download functions *****/
     func downloadFromFourSquare(pin: Pin){
+        // Check fi we are connect to the internet
+        if !Reachability.isConnectedToNetwork() {
+            self.showAlert("No Network Connection", message: "Unable to connect to Internet")
+        }
         let ll = "\(pin.latitude),\(pin.longitude)"
         startWaiting()
         let app = UIApplication.sharedApplication()

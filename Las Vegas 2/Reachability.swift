@@ -16,7 +16,7 @@ public class Reachability {
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "HEAD"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
-        request.timeoutInterval = 10.0
+        request.timeoutInterval = 5.0
         
         var response: NSURLResponse?
         
