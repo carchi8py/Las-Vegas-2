@@ -99,7 +99,14 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchAllLocations().count
+        var count = fetchAllLocations().count
+        if count == 0 {
+            if !Reachability.isConnectedToNetwork() {
+                showAlert("No Network Connection", message: "Unable to connect to Internet")
+                //prevent network activity from starting up just return.
+            }
+        }
+        return count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -139,6 +146,15 @@ class TableViewController: UITableViewController {
         
         self.navigationController?.pushViewController(viewController, animated: true)
         
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
 }
