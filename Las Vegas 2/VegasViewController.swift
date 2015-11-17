@@ -125,6 +125,11 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         var dropPin = MKPointAnnotation()
         dropPin.coordinate.latitude = pinToBeAdded.latitude
         dropPin.coordinate.longitude = pinToBeAdded.longitude
+        if !Reachability.isConnectedToNetwork() {
+            self.showAlert("No Network Connection", message: "Unable to connect to Internet")
+            //Don't drop pin if there is no network connection.
+            return
+        }
         mapView.addAnnotation(dropPin)
     }
     
@@ -133,6 +138,8 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         // Check fi we are connect to the internet
         if !Reachability.isConnectedToNetwork() {
             self.showAlert("No Network Connection", message: "Unable to connect to Internet")
+            //prevent network activity from starting up just return.
+            return
         }
         let ll = "\(pin.latitude),\(pin.longitude)"
         startWaiting()

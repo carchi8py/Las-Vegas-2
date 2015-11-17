@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Las Vegas 2/VegasViewController.swift"
-            timestampString = "469340031.4841"
+            timestampString = "469423761.330426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "downloadFromFourSquare(_:)"
             landmarkType = "5">
          </BreakpointContent>
