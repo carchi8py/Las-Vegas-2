@@ -14,7 +14,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
 
     //The Map View Object
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var waitingOnData: UIActivityIndicatorView!
+
     
     //Default to Restore map location when app is reopened
     let defaults = NSUserDefaults()
@@ -23,12 +23,12 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        waitingOnData.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
         
         //Check if we have network connection
         if !Reachability.isConnectedToNetwork() {
             self.showAlert("No Network Connection", message: "Unable to connect to Internet")
+            stopWaiting()
         }
         
         //Make the view delgate the map
@@ -133,6 +133,7 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
         // Check fi we are connect to the internet
         if !Reachability.isConnectedToNetwork() {
             self.showAlert("No Network Connection", message: "Unable to connect to Internet")
+            stopWaiting()
         }
         let ll = "\(pin.latitude),\(pin.longitude)"
         startWaiting()
@@ -177,14 +178,12 @@ class VegasViewController: UIViewController, MKMapViewDelegate, UIGestureRecogni
     
     /***** Waiting On data function *****/
     func startWaiting() {
-        self.waitingOnData.hidden = false
-        self.waitingOnData.startAnimating()
+        let app = UIApplication.sharedApplication()
+        app.networkActivityIndicatorVisible = true
     }
     
     func stopWaiting() {
         let app = UIApplication.sharedApplication()
-        self.waitingOnData.stopAnimating()
-        self.waitingOnData.hidden = true
         app.networkActivityIndicatorVisible = false
     }
     

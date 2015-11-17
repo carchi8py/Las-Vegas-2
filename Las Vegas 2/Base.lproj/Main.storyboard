@@ -38,11 +38,6 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
                             </mapView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dQK-3V-yvk">
-                                <rect key="frame" x="282" y="281" width="37" height="37"/>
-                                <animations/>
-                                <color key="color" red="1" green="0.57866467929999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -50,15 +45,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="06L-f3-ylo" secondAttribute="trailing" constant="-20" id="8fq-Hb-SCK"/>
                             <constraint firstItem="06L-f3-ylo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="AWR-lO-Aep"/>
                             <constraint firstItem="06L-f3-ylo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="EJC-ra-dkD"/>
-                            <constraint firstItem="dQK-3V-yvk" firstAttribute="centerX" secondItem="06L-f3-ylo" secondAttribute="centerX" id="Kkq-2f-GBX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="06L-f3-ylo" secondAttribute="bottom" id="XmF-ws-f7Z"/>
-                            <constraint firstItem="dQK-3V-yvk" firstAttribute="centerY" secondItem="06L-f3-ylo" secondAttribute="centerY" id="c8b-mL-QiO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find Things nearby in Las Vegas" id="6Lv-NN-Mx5"/>
                     <connections>
                         <outlet property="mapView" destination="06L-f3-ylo" id="Tbl-oo-XRA"/>
-                        <outlet property="waitingOnData" destination="dQK-3V-yvk" id="WLW-Ov-Rvv"/>
                         <segue destination="zaK-P9-G8t" kind="show" id="eNI-M1-gJV"/>
                     </connections>
                 </viewController>
