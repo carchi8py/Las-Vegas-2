@@ -12,10 +12,6 @@
 The first is a table view. The table view show the name of the location, how many people are currently checked in here on Foursquare, and the total number of people who have ever checked in here. The table view also shows a picture. <br>
 <img src="https://github.com/carchi8py/Las-Vegas-2/blob/master/img/image2.jpg?raw=true" width="50%"></img>
 
-###Table View (for thouse in a rush)
-If the user click on the pin while the activity indicator is still up, they will still be able to view the data, but images that haven't loaded will not appear. For Instance Hollywood Theatre's images haven't been downloaded yet. As the user scroll through the table the hidden cell will check to see if they have a image, and show it when the cell reapears on the screen. This was done so if the user has very bad internet connectiont hey still can get all the information with out having to wait for the images to download <br>
-<img src="https://raw.githubusercontent.com/carchi8py/Las-Vegas-2/master/img/image5.jpg" width="50%"></img>
-
 ###Map View
 The second view is a map view. The map view show the same place from the table view, but plot them on the map using the Latitude and longitude that Foursqaure provided. Clicking on a location will bring up the detailed view.<br>
 
